@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+
+actor "Поставщик" as User
+actor "грузчик1" as User1
+actor "грузчик2" as User2
+actor "мерчендайзер" as User3
+actor "сотрудник2" as User5
+
+rectangle "Информационная система склада" {
+    usecase "сервер" as server
+    usecase "База данных" as BD
+    usecase "склад" as sklad
+    usecase "магазин" as magazin
+
+    User5 -–> User: заказ товара
+    User -–> User1 : передача товара службе доставки
+    User1 -–> User5: поставляет товар на склад
+    User5 -–> server : сканирование товара
+    server -–> BD : загрузка в базу данных
+    BD -–> User3: определение места хранения
+    User3 -–> sklad: попадание товара на склад
+    sklad -–> User2: передача товаров
+    User2 –> magazin: передача товаров в магазин
+    User5 –> BD: инвентаризация
+    User3 –> BD: выявление списанных товаров
+    User3 –> User1: отправка списанных товаров
+    User1 –> User: передача списанных товаров
+@enduml
