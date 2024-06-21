@@ -1,0 +1,27 @@
+@startuml
+
+actor МенеджерПроекта as ProjectManager
+actor Разработчик as Developer
+actor Клиент as Client
+
+usecase "Создать проект" as UC1
+usecase "Добавить задачу" as UC2
+usecase "Назначить задачу" as UC3
+usecase "Обновить статус задачи" as UC4
+usecase "Просмотреть статус проекта" as UC5
+usecase "Оставить отзыв" as UC6
+
+ProjectManager -- UC1
+ProjectManager -- UC2
+ProjectManager -- UC3
+ProjectManager -- UC5
+
+Developer -- UC2
+Developer -- UC4
+Developer -- UC5
+
+Client -- UC5
+Client -- UC6
+
+@enduml
+
