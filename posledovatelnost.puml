@@ -1,0 +1,18 @@
+@startuml
+actor "Сотрудник склада" as WarehouseEmployee
+participant "Информационная система склада" as WarehouseSystem
+participant "База данных" as Database
+
+WarehouseEmployee -> WarehouseSystem: Добавить товар
+WarehouseSystem -> Database: Вставить запись о товаре
+Database --> WarehouseSystem: Подтверждение
+
+WarehouseEmployee -> WarehouseSystem: Удалить товар
+WarehouseSystem -> Database: Удалить запись о товаре
+Database --> WarehouseSystem: Подтверждение
+
+WarehouseEmployee -> WarehouseSystem: Проверить местоположение товара
+WarehouseSystem -> Database: Запрос местоположения товара
+Database --> WarehouseSystem: Вернуть местоположение
+WarehouseSystem --> WarehouseEmployee: Отобразить местоположение
+@enduml
